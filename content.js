@@ -387,91 +387,89 @@ function buildPanelMarkup(config, state, entry) {
           </div>
         </header>
 
-        <div class="csawesome-prep-scroll-area">
-          <div class="csawesome-prep-progress">
-            <div>
-              <span class="csawesome-prep-kicker">Roadmap</span>
-              <strong>${completedCount}/${totalGoals} blocks</strong>
-            </div>
-            <div>
-              <span class="csawesome-prep-kicker">Readiness</span>
-              <strong>${readiness}%</strong>
-            </div>
-            <div>
-              <span class="csawesome-prep-kicker">Streak</span>
-              <strong>${state.progress.streak}</strong>
-            </div>
+        <div class="csawesome-prep-progress">
+          <div>
+            <span class="csawesome-prep-kicker">Roadmap</span>
+            <strong>${completedCount}/${totalGoals} blocks</strong>
+          </div>
+          <div>
+            <span class="csawesome-prep-kicker">Readiness</span>
+            <strong>${readiness}%</strong>
+          </div>
+          <div>
+            <span class="csawesome-prep-kicker">Streak</span>
+            <strong>${state.progress.streak}</strong>
+          </div>
+        </div>
+
+        <nav class="csawesome-prep-tabs" aria-label="Coach views">
+          <button
+            class="csawesome-prep-tab ${currentView === "focus" ? "is-active" : ""}"
+            data-action="switch-view"
+            data-view="focus"
+          >
+            Focus
+          </button>
+          <button
+            class="csawesome-prep-tab ${currentView === "checklist" ? "is-active" : ""}"
+            data-action="switch-view"
+            data-view="checklist"
+          >
+            Checklist
+          </button>
+          <button
+            class="csawesome-prep-tab ${currentView === "rewards" ? "is-active" : ""}"
+            data-action="switch-view"
+            data-view="rewards"
+          >
+            Achievements
+          </button>
+        </nav>
+
+        <section class="csawesome-prep-panel-view">
+          ${renderActiveView(
+            entry,
+            currentView,
+            currentChecks,
+            checkedCount,
+            allChecklistComplete,
+            isComplete,
+            config,
+            completedCount,
+            nextAchievement,
+            dayLabel,
+            state.progress.latestAchievement
+          )}
+        </section>
+
+        <div class="csawesome-prep-footer">
+          <div class="csawesome-prep-primary-action">
+            <button
+              data-action="mark-mastered"
+              class="is-primary"
+              ${!isComplete && !allChecklistComplete ? "disabled" : ""}
+            >
+              ${
+                isComplete
+                  ? "Mastered"
+                  : allChecklistComplete
+                    ? "Mark mastered"
+                    : "Complete checklist first"
+              }
+            </button>
           </div>
 
-          <nav class="csawesome-prep-tabs" aria-label="Coach views">
-            <button
-              class="csawesome-prep-tab ${currentView === "focus" ? "is-active" : ""}"
-              data-action="switch-view"
-              data-view="focus"
-            >
-              Focus
-            </button>
-            <button
-              class="csawesome-prep-tab ${currentView === "checklist" ? "is-active" : ""}"
-              data-action="switch-view"
-              data-view="checklist"
-            >
-              Checklist
-            </button>
-            <button
-              class="csawesome-prep-tab ${currentView === "rewards" ? "is-active" : ""}"
-              data-action="switch-view"
-              data-view="rewards"
-            >
-              Achievements
-            </button>
-          </nav>
-
-          <section class="csawesome-prep-panel-view">
-            ${renderActiveView(
-              entry,
-              currentView,
-              currentChecks,
-              checkedCount,
-              allChecklistComplete,
-              isComplete,
-              config,
-              completedCount,
-              nextAchievement,
-              dayLabel,
-              state.progress.latestAchievement
-            )}
-          </section>
-
-          <div class="csawesome-prep-footer">
-            <div class="csawesome-prep-primary-action">
-              <button
-                data-action="mark-mastered"
-                class="is-primary"
-                ${!isComplete && !allChecklistComplete ? "disabled" : ""}
-              >
-                ${
-                  isComplete
-                    ? "Mastered"
-                    : allChecklistComplete
-                      ? "Mark mastered"
-                      : "Complete checklist first"
-                }
-              </button>
-            </div>
-
-            <div class="csawesome-prep-actions">
-              <button data-action="open-target">${isManualView ? "Open selected target" : "Open today’s target"}</button>
-              <button data-action="open-previous">Previous target</button>
-              <button data-action="open-next">Open next target</button>
-              <button data-action="reset-goal" class="is-ghost">Reset block</button>
-            </div>
-
-            <label class="csawesome-prep-toggle">
-              <input type="checkbox" data-action="toggle-auto-advance" ${state.settings.autoAdvance ? "checked" : ""}>
-              <span>Auto-open the next roadmap target after mastery</span>
-            </label>
+          <div class="csawesome-prep-actions">
+            <button data-action="open-target">${isManualView ? "Open selected target" : "Open today’s target"}</button>
+            <button data-action="open-previous">Previous target</button>
+            <button data-action="open-next">Open next target</button>
+            <button data-action="reset-goal" class="is-ghost">Reset block</button>
           </div>
+
+          <label class="csawesome-prep-toggle">
+            <input type="checkbox" data-action="toggle-auto-advance" ${state.settings.autoAdvance ? "checked" : ""}>
+            <span>Auto-open the next roadmap target after mastery</span>
+          </label>
         </div>
       </section>
     </div>
