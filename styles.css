@@ -206,7 +206,7 @@
 }
 
 .csawesome-prep-panel-view {
-  padding-bottom: 8px;
+  padding-bottom: 12px;
 }
 
 .csawesome-prep-check-status {
@@ -431,9 +431,11 @@
 }
 
 .csawesome-prep-footer {
-  background: linear-gradient(180deg, rgba(247, 241, 225, 0.3), rgba(247, 241, 225, 0.98) 24%);
-  bottom: 0;
-  position: sticky;
+  background: linear-gradient(180deg, rgba(247, 241, 225, 0.72), rgba(247, 241, 225, 0.98) 28%);
+  border-top: 1px solid rgba(16, 37, 66, 0.1);
+  box-shadow: 0 -10px 24px rgba(247, 241, 225, 0.65);
+  margin-top: 8px;
+  padding-top: 6px;
 }
 
 .csawesome-prep-toggle {
