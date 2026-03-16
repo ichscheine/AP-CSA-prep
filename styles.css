@@ -203,7 +203,11 @@
 .csawesome-prep-panel-view {
   flex: 1;
   min-height: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
 }
 
 .csawesome-prep-check-status {
@@ -220,6 +224,7 @@
 
 .csawesome-prep-sparks {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-top: 10px;
 }
@@ -620,5 +625,82 @@
 
   .csawesome-prep-tabs {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .csawesome-prep-shell {
+    width: min(100vw - 16px, 380px);
+  }
+
+  .csawesome-prep-header,
+  .csawesome-prep-progress,
+  .csawesome-prep-section,
+  .csawesome-prep-tabs,
+  .csawesome-prep-primary-action,
+  .csawesome-prep-actions,
+  .csawesome-prep-toggle {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .csawesome-prep-progress,
+  .csawesome-prep-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .csawesome-prep-tabs {
+    gap: 6px;
+  }
+
+  .csawesome-prep-tab {
+    font-size: 11px;
+    padding: 8px 6px;
+  }
+}
+
+@media (max-height: 820px) {
+  .csawesome-prep-card {
+    max-height: calc(100vh - 24px);
+  }
+
+  .csawesome-prep-header {
+    padding: 16px 16px 14px;
+  }
+
+  .csawesome-prep-header h2 {
+    font-size: 22px;
+  }
+
+  .csawesome-prep-progress {
+    gap: 8px;
+    padding-top: 12px;
+  }
+
+  .csawesome-prep-progress div {
+    padding: 9px 10px;
+  }
+
+  .csawesome-prep-progress strong {
+    font-size: 16px;
+  }
+
+  .csawesome-prep-section {
+    padding-top: 6px;
+  }
+
+  .csawesome-prep-check {
+    padding: 9px 11px;
+  }
+
+  .csawesome-prep-primary-action {
+    padding-top: 14px;
+  }
+}
+
+@media (max-height: 820px) and (min-width: 901px) {
+  #csawesome-prep-coach {
+    top: 12px;
+    right: 12px;
   }
 }
