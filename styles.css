@@ -48,6 +48,7 @@
   background: linear-gradient(135deg, rgba(16, 37, 66, 0.96), rgba(30, 70, 94, 0.92));
   color: #f4efe0;
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   justify-content: space-between;
   padding: 18px 18px 16px;
@@ -80,6 +81,7 @@
   align-items: flex-end;
   display: flex;
   flex-direction: column;
+  margin-left: auto;
   min-width: 88px;
 }
 
@@ -93,10 +95,21 @@
   opacity: 0.88;
 }
 
+.csawesome-prep-scroll-area {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
 .csawesome-prep-progress {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
   padding: 14px 18px 6px;
 }
 
@@ -201,13 +214,8 @@
 }
 
 .csawesome-prep-panel-view {
-  flex: 1;
   min-height: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior: contain;
   padding-bottom: 8px;
-  scrollbar-width: thin;
 }
 
 .csawesome-prep-check-status {
@@ -407,7 +415,7 @@
 .csawesome-prep-actions {
   display: grid;
   gap: 8px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   padding: 0 18px 10px;
 }
 
@@ -434,11 +442,12 @@
 .csawesome-prep-footer {
   background: linear-gradient(180deg, rgba(247, 241, 225, 0.3), rgba(247, 241, 225, 0.98) 24%);
   bottom: 0;
+  margin-top: auto;
   position: sticky;
 }
 
 .csawesome-prep-toggle {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   gap: 10px;
   padding: 0 18px 18px;
@@ -618,9 +627,9 @@
     flex-direction: column;
   }
 
-  .csawesome-prep-progress,
-  .csawesome-prep-actions {
-    grid-template-columns: 1fr 1fr;
+  .csawesome-prep-countdown {
+    align-items: flex-start;
+    margin-left: 0;
   }
 
   .csawesome-prep-tabs {
@@ -651,6 +660,7 @@
 
   .csawesome-prep-tabs {
     gap: 6px;
+    grid-template-columns: 1fr;
   }
 
   .csawesome-prep-tab {
@@ -683,6 +693,10 @@
 
   .csawesome-prep-progress strong {
     font-size: 16px;
+  }
+
+  .csawesome-prep-tabs {
+    padding-top: 8px;
   }
 
   .csawesome-prep-section {
